@@ -1,10 +1,49 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('first') {
+            steps {
+                echo 'Hello first stage'
+            }
+        }
+    }
+}
+
+--------------------------
+multi stage example:
+-------------------------
+pipeline {
+    agent any
+
+    stages {
+        stage('first') {
+            steps {
+                echo 'Hello first stage'
+            }
+        }
+        
+        stage('second') {
+            steps {
+                echo 'Hello second stage'
+            }
+        }
+    }
+
+
+
+
+
+
+#--------------------------with terraform----------------------
 pipeline {
     agent any
 
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/priyanshu-0003/Terraform-Pratice.git'
+                git branch: 'main', url: 'https://github.com/priyanshu-0003/Terraform-Pratice.git'     #it should be ur repo.
             }
         }
         stage('init') {
