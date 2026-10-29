@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/priyanshu-0003/Terraform-Pratice.git'
+            }
+        }
+        stage('init') {
+            steps {
+                dir('day-1-basic-configure-files') {
+                    sh 'terraform init'
+                }
+            }
+        }
+        stage('plan') {
+            steps {
+                dir('day-1-basic-configure-files') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+        stage('apply') {
+            steps {
+                dir('day-1-basic-configure-files') {
+                    sh 'terraform apply -auto-approve'
+                }
+            }
+        }
+    }
+}
